@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprender Lua - Do Zero ao Avançado</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: auto;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: left;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        h1, h2, h3 {
+            color: #007BFF;
+        }
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Aprender Lua - Do Zero ao Avançado</h1>
+        
+        <h2>1. Introdução à Lua</h2>
+        <p>Lua é uma linguagem de programação leve e rápida, amplamente utilizada em jogos, aplicações embarcadas e scripts. Sua sintaxe é simples e flexível, permitindo fácil aprendizado e implementação.</p>
+
+        <h2>2. Variáveis e Tipos de Dados</h2>
+        <p>Lua possui tipos de dados como números, strings, booleanos, tabelas, funções e threads. As variáveis são declaradas usando a palavra-chave <code>local</code>.</p>
+        <pre><code>
+-- Declaração de variáveis
+local numero = 42
+local nome = "Lua"
+local isActive = true
+        </code></pre>
+
+        <h2>3. Controle de Fluxo</h2>
+        <p>Usamos condicionais e loops para controlar o fluxo do programa. As estruturas condicionais incluem <code>if</code>, <code>else</code> e <code>elseif</code>.</p>
+        <pre><code>
+-- Estruturas condicionais
+local idade = 18
+if idade >= 18 then
+    print("Você é maior de idade.")
+else
+    print("Você é menor de idade.")
+end
+
+-- Looping
+for i = 1, 5 do
+    print("Contagem:", i)
+end
+        </code></pre>
+
+        <h2>4. Funções</h2>
+        <p>Funções são blocos de código que podem ser reutilizados. Elas podem receber parâmetros e retornar valores.</p>
+        <pre><code>
+-- Definindo uma função
+function calcularArea(base, altura)
+    return (base * altura) / 2
+end
+
+-- Chamando a função
+local area = calcularArea(10, 5)
+print("Área do triângulo:", area) -- Saída: 25
+        </code></pre>
+
+        <h2>5. Tabelas</h2>
+        <p>Tabelas são a estrutura de dados mais poderosa em Lua, permitindo armazenar dados de forma complexa. Elas podem ser usadas como arrays, dicionários ou objetos.</p>
+        <pre><code>
+-- Criando uma tabela
+local estudante = {
+    nome = "Maria",
+    idade = 20,
+    notas = {8, 9, 10}
+}
+
+-- Acessando os dados da tabela
+print("Nome:", estudante.nome)
+print("Idade:", estudante.idade)
+print("Nota 1:", estudante.notas[1]) -- Saída: 8
+        </code></pre>
+
+        <h2>6. Metatables</h2>
+        <p>Metatables permitem a implementação de herança e comportamentos personalizados em tabelas.</p>
+        <pre><code>
+-- Usando metatables para implementar herança
+local animal = {}
+animal.__index = animal
+
+function animal:andar()
+    print("O animal está andando.")
+end
+
+local cachorro = setmetatable({}, animal)
+cachorro:andar() -- Saída: O animal está andando.
+        </code></pre>
+
+        <h2>7. Manipulação de Strings</h2>
+        <p>Lua tem funções integradas para manipular strings de maneira eficaz.</p>
+        <pre><code>
+local frase = "Aprendendo Lua é divertido!"
+local primeiraPalavra = string.match(frase, "%S+")
+print("Primeira palavra:", primeiraPalavra) -- Saída: Aprendendo
+        </code></pre>
+
+        <h2>8. Módulos e Bibliotecas</h2>
+        <p>Você pode dividir seu código em módulos, facilitando a reutilização e organização.</p>
+        <pre><code>
+-- Criando um módulo em Lua
+local meuModulo = {}
+
+function meuModulo.soma(a, b)
+    return a + b
+end
+
+return meuModulo
+
+-- Usando o módulo
+local soma = require("meuModulo")
+print("Resultado da soma:", soma.soma(5, 10)) -- Saída: 15
+        </code></pre>
+
+        <h2>9. Tratamento de Erros</h2>
+        <p>Lua possui um sistema de tratamento de erros que permite capturar e lidar com exceções.</p>
+        <pre><code>
+-- Tratamento de erros
+local status, err = pcall(function()
+    error("Um erro ocorreu!")
+end)
+
+if not status then
+    print("Erro:", err)
+end
+        </code></pre>
+
+        <h2>10. Funções Úteis em Lua</h2>
+        <p>Aqui estão dez funções úteis que você pode usar em Lua:</p>
+
+        <h3>10.1. <code>math.abs(x)</code></h3>
+        <p>Retorna o valor absoluto de <code>x</code>.</p>
+        <pre><code>
+print("Valor absoluto de -5:", math.abs(-5)) -- Saída: 5
+        </code></pre>
+
+        <h3>10.2. <code>math.sqrt(x)</code></h3>
+        <p>Retorna a raiz quadrada de <code>x</code>.</p>
+        <pre><code>
+print("Raiz quadrada de 16:", math.sqrt(16)) -- Saída: 4
+        </code></pre>
+
+        <h3>10.3. <code>table.insert(t, value)</code></h3>
+        <p>Insere um valor em uma tabela <code>t</code>.</p>
+        <pre><code>
+local numeros = {1, 2, 3}
+table.insert(numeros, 4)
+print("Tabela após inserção:", table.concat(numeros, ", ")) -- Saída: 1, 2, 3, 4
+        </code></pre>
+
+        <h3>10.4. <code>table.remove(t, pos)</code></h3>
+        <p>Remove o elemento na posição <code>pos</code> da tabela <code>t</code>.</p>
+        <pre><code>
+local frutas = {"maçã", "banana", "laranja"}
+table.remove(frutas, 2)
+print("Frutas após remoção:", table.concat(frutas, ", ")) -- Saída: maçã, laranja
+        </code></pre>
+
+        <h3>10.5. <code>string.len(s)</code></h3>
+        <p>Retorna o comprimento da string <code>s</code>.</p>
+        <pre><code>
+print("Comprimento da string 'Lua':", string.len("Lua")) -- Saída: 3
+        </code></pre>
+
+        <h3>10.6. <code>string.lower(s)</code></h3>
+        <p>Converte a string <code>s</code> para minúsculas.</p>
+        <pre><code>
+print("Minúsculas de 'LUA':", string.lower("LUA")) -- Saída: lua
+        </code></pre>
+
+        <h3>10.7. <code>string.upper(s)</code></h3>
+        <p>Converte a string <code>s</code> para maiúsculas.</p>
+        <pre><code>
+print("Maiúsculas de 'lua':", string.upper("lua")) -- Saída: LUA
+        </code></pre>
+
+        <h3>10.8. <code>math.random([m[, n]])</code></h3>
+        <p>Retorna um número aleatório entre <code>m</code> e <code>n</code>. Se apenas <code>n</code> for fornecido, retorna um número aleatório entre 1 e <code>n</code>.</p>
+        <pre><code>
+math.randomseed(os.time()) -- Inicia o gerador de números aleatórios
+print("Número aleatório entre 1 e 10:", math.random(1, 10))
+        </code></pre>
+
+        <h3>10.9. <code>os.date(format)</code></h3>
+        <p>Retorna a data e hora atual, formatada de acordo com o <code>format</code> especificado.</p>
+        <pre><code>
+print("Data atual:", os.date("%d/%m/%Y %H:%M:%S"))
+        </code></pre>
+
+        <h3>10.10. <code>coroutine.create(f)</code></h3>
+        <p>Cria uma nova coroutine que executa a função <code>f</code>.</p>
+        <pre><code>
+local co = coroutine.create(function()
+    for i = 1, 5 do
+        print("Contagem na coroutine:", i)
+        coroutine.yield() -- Pausa a execução
+    end
+end)
+
+coroutine.resume(co)
+coroutine.resume(co)
+        </code></pre>
+
+        <h2>11. Exemplos de Uso em Jogos</h2>
+        <p>Aqui estão alguns exemplos de código em Lua que são comumente usados em jogos:</p>
+
+        <h3>11.1. Movimentação de Personagem</h3>
+        <p>Um exemplo simples de movimentação de um personagem em um jogo 2D.</p>
+        <pre><code>
+-- Variáveis de posição
+local posX, posY = 0, 0
+local velocidade = 5
+
+-- Função para mover o personagem
+function mover(direcao)
+    if direcao == "cima" then
+        posY = posY + velocidade
+    elseif direcao == "baixo" then
+        posY = posY - velocidade
+    elseif direcao == "esquerda" then
+        posX = posX - velocidade
+    elseif direcao == "direita" then
+        posX = posX + velocidade
+    end
+    print("Posição do personagem:", posX, posY)
+end
+
+-- Simulando movimentos
+mover("cima")
+mover("direita")
+        </code></pre>
+
+        <h3>11.2. Colisão entre Objetos</h3>
+        <p>Exemplo de detecção de colisão entre dois retângulos.</p>
+        <pre><code>
+-- Função para verificar colisão
+function verificarColisao(rect1, rect2)
+    return not (rect1.x > rect2.x + rect2.largura or
+                rect2.x > rect1.x + rect1.largura or
+                rect1.y > rect2.y + rect2.altura or
+                rect2.y > rect1.y + rect1.altura)
+end
+
+-- Definindo dois retângulos
+local jogador = {x = 10, y = 10, largura = 50, altura = 50}
+local inimigo = {x = 30, y = 30, largura = 50, altura = 50}
+
+-- Verificando colisão
+if verificarColisao(jogador, inimigo) then
+    print("Colisão detectada!")
+else
+    print("Sem colisão.")
+end
+        </code></pre>
+
+        <h3>11.3. Gerenciamento de Estados do Jogo</h3>
+        <p>Um exemplo simples de gerenciamento de estados, como menu, jogo e pausa.</p>
+        <pre><code>
+-- Estados do jogo
+local estadoDoJogo = "menu"
+
+-- Função para mudar o estado
+function mudarEstado(novoEstado)
+    estadoDoJogo = novoEstado
+    print("Estado do jogo:", estadoDoJogo)
+end
+
+-- Mudando estados
+mudarEstado("jogo")
+mudarEstado("pausa")
+        </code></pre>
+
+        <h3>11.4. Sistema de Inventário</h3>
+        <p>Um exemplo básico de como gerenciar um inventário em um jogo.</p>
+        <pre><code>
+local inventario = {}
+
+-- Função para adicionar item
+function adicionarItem(item)
+    table.insert(inventario, item)
+    print(item .. " adicionado ao inventário.")
+end
+
+-- Função para mostrar inventário
+function mostrarInventario()
+    print("Inventário:")
+    for i, item in ipairs(inventario) do
+        print(i, item)
+    end
+end
+
+-- Adicionando itens
+adicionarItem("Espada")
+adicionarItem("Poção")
+mostrarInventario()
+        </code></pre>
+
+        <h3>11.5. Sistema de Pontuação</h3>
+        <p>Um exemplo simples de como implementar um sistema de pontuação.</p>
+        <pre><code>
+local pontuacao = 0
+
+-- Função para adicionar pontos
+function adicionarPontos(pontos)
+    pontuacao = pontuacao + pontos
+    print("Pontuação atual:", pontuacao)
+end
+
+-- Adicionando pontos
+adicionarPontos(10)
+adicionarPontos(5)
+        </code></pre>
+
+        <h2>12. Conclusão</h2>
+        <p>Lua é uma linguagem poderosa e versátil, ideal para iniciantes e desenvolvedores experientes. Com sua sintaxe simples e recursos avançados, é uma excelente escolha para diversos tipos de projetos, especialmente jogos.</p>
+    </div>
+</body>
+  </html>
